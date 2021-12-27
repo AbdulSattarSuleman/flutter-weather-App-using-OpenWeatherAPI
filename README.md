@@ -1,6 +1,6 @@
 # weather_app
 
-Flutter Weather App Using
+Flutter Weather App 
 
 ## Using <a href="https://openweathermap.org/api" target="_blank">Open Weather Api </a>
 
