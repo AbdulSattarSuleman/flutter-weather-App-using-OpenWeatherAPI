@@ -7,7 +7,7 @@ Flutter Weather App Using
 ## Application ScreenShots 
 
 ### Home Screen
-<img src="https://github.com/AbdulSattarSuleman/flutter-weather-App-using-OpenWeatherAPI/blob/master/output-screens/home_screen.png"/>
+<img src="https://github.com/AbdulSattarSuleman/flutter-weather-App-using-OpenWeatherAPI/blob/master/output-screens/home_screen.png" height="200px"/>
 <br/>
 
 ### Spell Error Handling
