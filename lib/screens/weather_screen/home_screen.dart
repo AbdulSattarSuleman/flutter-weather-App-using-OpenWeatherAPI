@@ -224,10 +224,27 @@ cityNotFoundError(BuildContext context) {
                     ),
                   ),
                 ),
-                SvgPicture.asset('assets/images/404-cat.svg')
+                SvgPicture.asset(
+                  'assets/images/404-cat.svg',
+                  height: 165,
+                ),
+                Text(
+                  "Check the Spelling or try a different city.",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.quicksand(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey.shade700,
+                  ),
+                )
               ],
             ),
           ),
+          actionsPadding: EdgeInsets.all(10),
+          contentPadding: EdgeInsets.all(10),
+          backgroundColor: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         );
       });
 }
