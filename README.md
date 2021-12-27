@@ -1,16 +1,23 @@
 # weather_app
 
-A new Flutter project.
+Flutter Weather App Using
 
-## Getting Started
+## Using <a href="https://openweathermap.org/api" target="_blank">Open Weather Api </a>
 
-This project is a starting point for a Flutter application.
+## Application ScreenShots 
 
-A few resources to get you started if this is your first Flutter project:
+### Home Screen
+<img src="https://github.com/AbdulSattarSuleman/flutter-weather-App-using-OpenWeatherAPI/blob/master/output-screens/home_screen.png"/>
+<br/>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Spell Error Handling
+<img src="https://github.com/AbdulSattarSuleman/flutter-weather-App-using-OpenWeatherAPI/blob/master/output-screens/not-dound.png"/>
+<br/>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Validation Screen
+<img src="https://github.com/AbdulSattarSuleman/flutter-weather-App-using-OpenWeatherAPI/blob/master/output-screens/spell-error.png"/>
+<br/>
+
+### About Screen
+<img src="https://github.com/AbdulSattarSuleman/flutter-weather-App-using-OpenWeatherAPI/blob/master/output-screens/about.png"/>
+<br/>
