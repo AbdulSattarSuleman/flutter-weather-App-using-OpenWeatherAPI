@@ -6,7 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/screens/about_screen.dart';
+
+import 'about_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,8 +23,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                // Navigator.push(
-                //     context, MaterialPageRoute(builder: (_) => AboutScreen()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => AboutScreen()));
               },
               icon: Icon(
                 Icons.info_outline,
@@ -51,20 +52,22 @@ class _MainState extends State<Main> {
   Future<void> getWeather() async {
     final String searchQuery = cityController.text;
     const String appId = "1137d4b46dee4d51f303660eca05a5f8";
+
     var response = await http.get(Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$searchQuery&appid=$appId&units=metric'));
     // var data = jsonDecode(response.body);
     var data = json.decode(response.body);
     if (response.statusCode == 404) {
-      // cityNotFoundError(context);
+      cityNotFoundError(context);
     }
     if (searchQuery.isEmpty) {
-      // blankFieldError(context);
+      blankFieldError(context);
     }
     setState(() {
       mainTemp = data['main']['temp'];
       city = data['name'];
     });
+    cityController.clear();
   }
 
   // Detect Network Error
@@ -73,7 +76,7 @@ class _MainState extends State<Main> {
 
     if (connection != ConnectivityResult.mobile &&
         connection != ConnectivityResult.wifi) {
-      // noNetworkError(context);
+      noNetworkError(context);
     } else {
       getWeather();
     }
@@ -249,4 +252,79 @@ cityNotFoundError(BuildContext context) {
       });
 }
 
-text ="https://github.com/zxcodes/Weatherify/blob/main/lib/screens/HomeScreen.dart"
+blankFieldError(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Container(
+            height: 170,
+            width: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  "Assets/blank.svg",
+                  height: 70,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 15.0),
+                  child: Text(
+                    "Please enter a city name!",
+                    style: GoogleFonts.quicksand(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[700]),
+                  ),
+                )
+              ],
+            ),
+          ),
+          actionsPadding: EdgeInsets.all(10),
+          contentPadding: EdgeInsets.all(10),
+          backgroundColor: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        );
+      });
+}
+
+noNetworkError(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Container(
+            height: 170,
+            width: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/images/no-signal.svg',
+                  height: 70,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: Text(
+                    "No Intenet",
+                    style: GoogleFonts.quicksand(
+                      fontSize: 23,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          contentPadding: EdgeInsets.all(10),
+          actionsPadding: EdgeInsets.all(10),
+          backgroundColor: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        );
+      });
+}
