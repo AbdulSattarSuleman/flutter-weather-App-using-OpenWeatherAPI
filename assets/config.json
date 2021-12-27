@@ -1,0 +1,4 @@
+{
+    "baseUrl": "https://api.openweathermap.org/data/2.5/",
+    "appId":"1137d4b46dee4d51f303660eca05a5f8"
+}
